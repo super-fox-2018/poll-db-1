@@ -54,6 +54,3 @@ db.all(query5, (err, output) => {
   if (err) throw err;
   console.log(output);
 });
-
-
-
