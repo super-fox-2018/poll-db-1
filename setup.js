@@ -30,23 +30,29 @@ const createVotes = `CREATE TABLE votes(
 
 
 if(commandLine === 'createPoliticians'){
-    db.run(createPoliticians, function (err) {
-        if (err) throw err;
-        console.log('Successfully created a new table!');
-      });
+    db.serialize(function(err){
+        db.run(createPoliticians, function (err) {
+            if (err) throw err;
+            console.log('Successfully created a new table!');
+          });
+    })
 }
 
 if(commandLine === 'createVoters'){
-    db.run(createVoters, function (err) {
-        if (err) throw err;
-        console.log('Successfully created a new table!');
-      });
+    db.serialize(function(err){
+        db.run(createVoters, function (err) {
+            if (err) throw err;
+            console.log('Successfully created a new table!');
+          });
+    })
 }
 
 if(commandLine === 'createVotes'){
-    db.run(createVotes, function (err) {
-        if (err) throw err;
-        console.log('Successfully created a new table!');
-      });
+    db.serialize(function(err){
+        db.run(createVotes, function (err) {
+            if (err) throw err;
+            console.log('Successfully created a new table!');
+          });
+    })
 }
 
