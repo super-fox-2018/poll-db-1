@@ -1,7 +1,7 @@
 const db = require('./db');
-const { politicians } = require('./data');
-const { voters } = require('./data');
-const { votes } = require('./data');
+const { politicians } = require('./csv/data');
+const { voters } = require('./csv/data');
+const { votes } = require('./csv/data');
 
 
 let politiciansQuery = `INSERT INTO politicians (name, party, location, grade_current) VALUES `;
