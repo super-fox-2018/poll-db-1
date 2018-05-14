@@ -1,0 +1,35 @@
+/*
+Release 3
+1. SELECT name, party, grade_current
+FROM Politicians
+WHERE grade_current > 9 and grade_current < 11 and party = 'R';
+
+2. select count(name) as totalVote, name
+FROM Votes
+JOIN Politicians
+ON Politicians.politician_id = Votes.politicianId
+WHERE name Like '%Snowe%';
+
+3. select name, count(name) as totalVote
+FROM Politicians
+Join Votes
+ON Politicians.politician_id = Votes.politicianId
+WHERE name Like 'Adam%'
+Group by Politicians.name;
+
+4. SELECT 
+	(SELECT COUNT(politicianId) FROM Votes WHERE politicianId = politician_id) AS totalVote, 
+	name, party, location
+FROM politicians
+ORDER BY totalVote DESC
+LIMIT 3;
+
+5. SELECT Voters.first_name, Voters.last_name, Voters.gender, Voters.age, Voters.voters_id
+FROM Voters
+JOIN Votes
+    ON Voters.voters_id = Votes.voterId
+JOIN Politicians
+    ON Politicians.politician_id = Votes.politicianId
+WHERE Politicians.name LIKE '%Snow%';
+
+*/
