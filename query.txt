@@ -1,0 +1,47 @@
+1.tampilkan nama Politicians ,partai dan grade current politician tersebut
+  yang bedara di partai R dan memiliki grade_current 9 s/d 11
+
+SELECT name,party,grade_current FROM Politicians 
+WHERE party ='R'AND grade_current > 9
+AND grade_current < 11;
+
+2.Hitung jumlah vote untuk politican yang bernama Olympia snowe
+
+SELECT count(*) AS totalVote,Politicians.name
+FROM votes
+JOIN Politicians
+ON votes.politician_id = Politicians.id
+WHERE Politicians.name = 'Olympia Snowe'
+
+3.Hitung jumlah vote untuk politician yang namanya mengandung kata Adam
+
+SELECT Politicians.name ,COUNT(*) AS totalVote
+FROM Politicians
+JOIN votes
+ON Politicians.id = votes.politician_id 
+WHERE Politicians.name LIKE  '%Adam%'
+GROUP BY Politicians.name
+
+4.Tampilkan 3 Politician beserta nama partai dan lokasi politican tersebut 
+  yang memuliki suara terbanyak
+
+
+SELECT COUNT(*) AS totalVote,Politicians.name,Politicians.party,
+Politicians.location
+FROM Politicians
+JOIN votes
+ON votes.politician_id = Politicians.id
+GROUP BY Politicians.id
+ORDER BY totalVote desc
+LIMIT 3;
+
+
+5.
+SELECT voters.*,votes.voter_id
+FROM voters
+JOIN votes
+ON voters.id = votes.voter_id
+JOIN Politicians
+ON Politicians.id = votes.politician_id
+WHERE Politicians.name = 'Olympia Snowe'
+
