@@ -24,7 +24,7 @@ class SeedData {
 
   static getVoters() {
     const voters = fs.readFileSync('./voters.csv', 'utf8').split('\n');
-    for (let i = 0; i < voters.length; i++) {
+    for (let i = 1; i < voters.length; i++) {
       let voter = voters[i].split(',');
       const query = `INSERT INTO voters 
                      (first_name, last_name, gender, age)
