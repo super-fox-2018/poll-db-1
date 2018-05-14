@@ -1,0 +1,25 @@
+1. tampilkan nama politican, partai, grade_current politican tersebut yang berada di partai R dan memiliki grade_current 9 s/d 11
+select name, party, grade_current 
+from candidate where party = 'R' and grade_current >= 9 and grade_current <= 11
+
+
+2. hitung jumlah vote untuk politican yang bernama Olympia snowe
+select count(*) as totalVotes, candidate.name from candidate inner join voter_candidate 
+on candidate.id = voter_candidate.candidate_id
+where name = 'Olympia Snowe' ;
+
+3. hitung jumlah vote untuk politician yang namanya mengandung kata adam
+select count(*) , candidate.name from candidate inner join voter_candidate 
+on candidate.id = voter_candidate.candidate_id
+where name like 'Adam%'  group by candidate.name;
+
+4. Tamplikan 3 politican beserta nama partai dan lokasi politican tersebut, yang memiliki suara terbanyak
+
+select count(*) As totalVotes , candidate.name from candidate inner join voter_candidate 
+on candidate.id = voter_candidate.candidate_id group by candidate.name order by totalVotes desc limit 3;
+
+5. Tampilkan siapa saja melakukan voting ke politican yang bernama Olympia Snowe
+select voters.* from candidate inner join voter_candidate inner join voters on
+candidate.id = voter_candidate.candidate_id and 
+voter_candidate.voter_id = voters.id
+ where name = 'Olympia Snowe';
