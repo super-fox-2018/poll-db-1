@@ -29,6 +29,8 @@ for (let i = 0; i < votes.length; i += 1) {
   else votesQuery += ';';
 }
 
+// RELEASE 1
+
 db.run(politiciansQuery, (err) => {
   if (err) throw err;
   console.log('Successfully added politicians');

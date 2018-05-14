@@ -2,6 +2,8 @@ const db = require('./db');
 
 const queries = [];
 
+// RELEASE 0
+
 queries.push(
   `CREATE TABLE politicians (
     id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
