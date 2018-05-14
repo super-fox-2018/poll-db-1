@@ -2,7 +2,7 @@
 const db    = require('./seed-data.js');
 
 
-Insert, Update and Delete data into/from DB
+// Insert, Update and Delete data into/from DB
 
 const args  = process.argv.slice(2);
 if(args[1] !== undefined){
