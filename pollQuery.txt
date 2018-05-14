@@ -15,7 +15,7 @@ SELECT politicians.name, COUNT(*) as totalVote
 FROM politicians
 JOIN votes ON votes.politician_id = politicians.politician_id
 WHERE politicians.name LIKE "Adam %"
-GROUP BY  politicians.name;
+GROUP BY politicians.name;
 
 //Query 4
 SELECT COUNT(*) as totalVotes, politicians.name, politicians.party, politicians.location
