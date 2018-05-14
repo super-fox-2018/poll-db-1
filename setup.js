@@ -36,7 +36,7 @@ GROUP BY politicians.id ORDER BY total_vote DESC LIMIT 3
   console.log("4-----------------------------------------------");
 })
 
-database.all(`SELECT * FROM voters
+database.all(`SELECT first_name,last_name,gender,age FROM voters
 JOIN votes ON votes.voters_id = voters.id WHERE politicians_id =(
 SELECT id FROM politicians WHERE name = "Olympia Snowe"
 )`,(err,row)=>{

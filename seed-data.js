@@ -2,7 +2,7 @@
 const fs = require('fs');
 const database = require('./database.js');
 
-
+database.serialize(function(err){
   var politiciansConvert = fs.readFileSync('./politicians.csv','utf8').split('\n');
   politiciansConvert.splice(politiciansConvert.length-1,1);
   for (var i = 1; i < politiciansConvert.length; i++) {
@@ -14,6 +14,9 @@ const database = require('./database.js');
       console.log("successfully created a new row");
     });
   };
+})
+
+database.serialize(function(err){
 
   var votesConvert = fs.readFileSync('./votes.csv','utf8').split('\n');
   votesConvert.splice(votesConvert.length-1,1);
@@ -26,6 +29,9 @@ const database = require('./database.js');
       console.log("successfully created a new row");
     });
   };
+})
+
+database.serialize(function(err){
 
   var votersConvert = fs.readFileSync('./voters.csv','utf8').split('\n');
   votersConvert.splice(votersConvert.length-1,1);
@@ -39,3 +45,4 @@ const database = require('./database.js');
       console.log("successfully created a new row");
     });
   };
+})
