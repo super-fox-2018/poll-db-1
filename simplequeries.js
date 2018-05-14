@@ -26,16 +26,10 @@ db.all(`SELECT COUNT(*) AS totalVote, politicians.name FROM votes JOIN politicia
     console.log(rows)
 })
 
-db.all(`SELECT votes.* FROM votes JOIN politicians ON votes.politicianId = politicians.id WHERE politicians.name = ?`,["Olympia Snowe"],(err,rows)=>{
+db.all(`SELECT voters.* FROM voters JOIN votes ON voters.id = votes.voterId WHERE votes.politicianId = (SELECT votes.politicianId FROM votes JOIN politicians ON votes.politicianId = politicians.id WHERE politicians.name = ?)`,["Olympia Snowe"],(err,rows)=>{
     if(err) return console.log(err);
-    let output = []
     console.log('\n 5')
-    for(let i = 0; i < rows.length; i++){
-        db.all(`SELECT voters.* FROM voters JOIN votes ON voters.id = votes.voterId WHERE voters.id = ?`, [rows[i]['voterId']],(err,result)=>{
-            output.push(result[0])
-            if(i === rows.length-1) console.log(output)
-        })
-    }
+    console.log(rows)
 })
 
 db.close()
